@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: telegram-advertiser
+  name: telegram-advertiser
+  namespace: projects
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telegram-advertiser
+  strategy: { }
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: telegram-advertiser
+    spec:
+      containers:
+        - image: miimagen:latest
+          name: miimagen
+          resources: { }
+          env:
+            - name: RABBITMQ_URL
+              value: jdbc:mysql://mysql:3306/recipes
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-vault
+                  key: username
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-vault
+                  key: password
+            - name: QUEUE_NAME
+              value: telegramadvertiser.home.events
+            - name: TELEGRAM_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: telegram-vault
+                  key: token
+            - name: TELEGRAM_CHAT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: telegram-vault
+                  key: chat-id
+status: { }
