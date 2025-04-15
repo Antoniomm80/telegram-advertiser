@@ -35,6 +35,8 @@ spec:
                 secretKeyRef:
                   name: rabbitmq-vault
                   key: password
+            - name: EXCHANGE_NAME
+              value: exchange.home.events
             - name: QUEUE_NAME
               value: telegramadvertiser.home.events
             - name: TELEGRAM_BOT_TOKEN
