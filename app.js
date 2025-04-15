@@ -1,7 +1,7 @@
 const {startListener} = require('./listener');
 
 const RABBITMQ_URL = process.env.RABBITMQ_URL;
-const EXCHANGE_NAME = process.env.EXCHANGE_NAME;
+const EXCHANGE_NAME = process.env.RABBITMQ_EXCHANGE_NAME;
 const QUEUE_NAME = process.env.RABBITMQ_QUEUE_NAME;
 const USERNAME = process.env.RABBITMQ_USER;
 const PASSWORD = process.env.RABBITMQ_PASSWORD;
@@ -12,9 +12,9 @@ async function start() {
         throw new Error('RabbitMQ configuration is missing');
     }
 
-
+    const connectionString = `amqp://${USERNAME}:${PASSWORD}@${RABBITMQ_URL}`;
     await startListener({
-        url: RABBITMQ_URL,
+        url: connectionString,
         exchange: EXCHANGE_NAME,
         queue: QUEUE_NAME,
     });

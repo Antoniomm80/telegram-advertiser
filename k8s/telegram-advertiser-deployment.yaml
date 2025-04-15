@@ -19,12 +19,10 @@ spec:
         app: telegram-advertiser
     spec:
       containers:
-        - image: miimagen:latest
-          name: miimagen
+        - image: 192.168.4.30:5000/telegram-advertiser:1.0.1
+          name: telegram-advertiser
           resources: { }
           env:
-            - name: RABBITMQ_URL
-              value: jdbc:mysql://mysql:3306/recipes
             - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:
@@ -35,9 +33,11 @@ spec:
                 secretKeyRef:
                   name: rabbitmq-vault
                   key: password
-            - name: EXCHANGE_NAME
+            - name: RABBITMQ_URL
+              value: rabbitmq.broker:5672
+            - name: RABBITMQ_EXCHANGE_NAME
               value: exchange.home.events
-            - name: QUEUE_NAME
+            - name: RABBITMQ_QUEUE_NAME
               value: telegramadvertiser.home.events
             - name: TELEGRAM_BOT_TOKEN
               valueFrom:

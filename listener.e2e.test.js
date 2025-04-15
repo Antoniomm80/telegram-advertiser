@@ -50,6 +50,7 @@ describe('Telegram Listener E2E', () => {
             message: 'Test message content',
             createDate: new Date().toISOString()
         };
+        console.log('[+] Publishing message to RabbitMQ:', JSON.stringify(payload));
         await channel.publish(
             'exchange.home.events',
             'test.routing.key',

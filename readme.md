@@ -13,10 +13,20 @@ Deben existir las siguientes variables de entorno:
 - `TELEGRAM_TOKEN`: Token de la API de Telegram.
 - `TELEGRAM_CHAT_ID`: ID del chat de Telegram al que se enviará el mensaje.
 
-### Docker image creation
+### Docker
+
+Image creation steps
 
 ``` bash
 docker build -t telegram-advertiser .
 docker tag telegram-advertiser:latest 192.168.4.30:5000/telegram-advertiser:latest
 docker push 192.168.4.30:5000/telegram-advertiser:latest
+```
+
+### K8s
+
+Port forwarding for accessing RabbitMQ web UI outside the cluster
+
+``` bash
+k -n broker port-forward svc/rabbitmq 15672:15672
 ```
