@@ -6,7 +6,7 @@ let connection, channel;
 async function startListener({url, exchange, queue}) {
     connection = await amqp.connect(url);
     channel = await connection.createChannel();
-    await channel.assertExchange(exchange, 'topic', {durable: true});
+    await channel.assertExchange(exchange, 'fanout', {durable: true});
     await channel.assertQueue(queue, {durable: true});
 
     await channel.bindQueue(queue, exchange, '#'); // Use '#' to receive all routing keys

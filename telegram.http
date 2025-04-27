@@ -1,0 +1,61 @@
+###
+@telegram_bot_token=-
+@telegram_chat_id=-
+POST https://api.telegram.org/bot{{telegram_bot_token}}/sendMessage
+Content-Type: application/json
+
+{
+  "chat_id": {{telegram_chat_id}},
+  "text": "*🇬🇧 Vocabulary lesson for 2025 04 27*
+
+*Term 1*
+*Source*: EWL PVC \\- Day 29 PDF Summary\\.pdf
+*Word*: to knuckle down
+*Definition*: to start working hard, especially after not working much
+*Part of Speech*: phr v
+*Pronunciation*:
+*Example Sentence*: I need to knuckle down or I'm going to fail the exam\\.
+*Collocations*:
+*Synonyms*:
+
+*Term 2*
+*Source*: EWL B2 \\- 6\\.1 Listening Lesson Script\\.pdf
+*Word*: feast
+*Definition*: a large meal, typically one for a celebration
+*Part of Speech*: n
+*Pronunciation*: /fiːst/
+*Example Sentence*: We had a feast to celebrate the New Year\\.
+*Collocations*:
+*Synonyms*:
+
+*Term 3*
+*Source*: EWL PVC \\- Day 18 PDF Summary\\.pdf
+*Word*: to shop around
+*Definition*: to go to a few shops before buying something
+*Part of Speech*: phr v
+*Pronunciation*:
+*Example Sentence*: I shopped around and got this 30% off\\.
+*Collocations*:
+*Synonyms*:
+
+*Term 4*
+*Source*: EWL B2 \\- 9\\.6 Vocabulary Lesson Script\\.pdf
+*Word*: phishing
+*Definition*: Phishing is an attempt to trick someone into giving you their identity information or bank account number, for example, over the internet\\.
+*Part of Speech*: n
+*Pronunciation*: /ˈfɪʃɪŋ/
+*Example Sentence*: Phishing is something to watch out for online\\.
+*Collocations*:
+*Synonyms*:
+
+*Term 5*
+*Source*: Slang Challenge \\(English with Lucy\\) 8\\.pdf
+*Word*: to get the sack
+*Definition*: be told to leave your job
+*Part of Speech*: idiom
+*Pronunciation*:
+*Example Sentence*: Wendy got the sack for stealing stationery\\.
+*Collocations*:
+*Synonyms*: ",
+  "parse_mode": "MarkdownV2"
+}

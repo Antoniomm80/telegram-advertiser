@@ -2,7 +2,7 @@ const {GenericContainer} = require('testcontainers');
 const amqp = require('amqplib');
 const axios = require('axios');
 const waitForExpect = require('wait-for-expect');
-const {startListener, stopListener} = require('./listener');
+const {startListener, stopListener} = require('../../src/listener');
 
 jest.setTimeout(30000); // Allow time for containers to spin up
 jest.mock('axios');
@@ -45,7 +45,7 @@ describe('Telegram Listener E2E', () => {
     it('should send message to Telegram when message arrives on RabbitMQ', async () => {
         const conn = await amqp.connect(rabbitUrl);
         const channel = await conn.createChannel();
-        await channel.assertExchange('exchange.home.events', 'topic', {durable: true});
+        await channel.assertExchange('exchange.home.events', 'fanout', {durable: true});
         const payload = {
             message: 'Test message content',
             createDate: new Date().toISOString()
@@ -62,6 +62,7 @@ describe('Telegram Listener E2E', () => {
                 `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,
                 {
                     chat_id: process.env.TELEGRAM_CHAT_ID,
+                    "parse_mode": "MarkdownV2",
                     text: 'Test message content',
                 }
             );

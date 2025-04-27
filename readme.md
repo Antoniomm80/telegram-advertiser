@@ -2,6 +2,20 @@
 
 Recoge un mensaje de una cola de RabbitMQ y lo envía a un canal de Telegram.
 
+## Project Structure
+
+The project follows JavaScript best practices with a clear separation of concerns:
+
+- `src/`: Contains all production code
+  - `app.js`: Main application entry point
+  - `listener.js`: RabbitMQ listener implementation
+  - `telegram.js`: Telegram API integration
+
+- `tests/`: Contains all test code
+  - `unit/`: Unit tests for individual components
+  - `integration/`: Integration tests that test multiple components together
+  - `e2e/`: End-to-end tests that test the entire application
+
 ## Requisitos
 
 Deben existir las siguientes variables de entorno:
